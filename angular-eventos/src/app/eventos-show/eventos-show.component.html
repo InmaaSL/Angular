@@ -1,39 +1,13 @@
-<!-- <div class="card-columns mt-4">
-  <h3 *ngIf="misEventos.length === 0"> No hay eventos </h3>
-  <div class="card" *ngFor="let evento of misEventos
-  " >
-    <div class="card-body">
-    <h4 class="card-title">{{evento.title}}</h4>
-    <p class="card-text">{{evento.description}}</p>
-    </div>
-    <div class="card-footer text-muted">
-    {{evento.date}}
-    <span class="float-right">{{evento.price}}€</span>
-    </div>
-    </div>
-</div> -->
-
-<!-- <div class="card">
-  <div class="card-body">
-    <h4 class="card-title">Título del evento</h4>
-    <p class="card-text">Descripción del evento</p>
-  </div>
-  <div class="card-footer text-muted">
-  Fecha del evento
-  <span class="float-right">Precio del evento€</span>
-  </div>
-</div> -->
-
 <div class="card-columns mt-4">
   <h3 *ngIf="misEventos.length === 0"> No hay eventos </h3>
-  <div class="card" *ngFor="let evento of misEventos" >
+  <div class="card" *ngFor="let evento of misEventos">
     <div class="card-body">
-    <h4 class="card-title">{{evento.title}}</h4>
-    <p class="card-text">{{evento.description}}</p>
+      <h4 class="card-title">{{evento.title}}</h4>
+      <p class="card-text">{{evento.description}}</p>
     </div>
     <div class="card-footer text-muted">
-    {{evento.date}}
-    <span class="float-right">{{evento.price}}€</span>
+      {{evento.date}}
+      <span class="float-right">{{evento.price}}€</span>
     </div>
-    </div>
+  </div>
 </div>
