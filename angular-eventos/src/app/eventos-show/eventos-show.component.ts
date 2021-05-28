@@ -11,6 +11,7 @@ export class EventosShowComponent implements OnInit {
   //title = "Mi lista de eventos";
 
   filterSearch = "";
+  ordenar =  "";
 
   misEventos: IEvento[] = [
     {
@@ -45,6 +46,13 @@ export class EventosShowComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  orderFecha(){
+    this.ordenar = "date";
+  }
+
+  orderPrecio(){
+    this.ordenar = "price";
+  }
 
 
 }

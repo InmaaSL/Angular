@@ -1,26 +1,30 @@
 <div>
-  <label class="col-form-label col-sm-2 text-sm-right" for="filterDesc"> Filtro:</label>
   <div class="col-sm-5">
-    <input type="text" [(ngModel)]="filterSearch" class="form-control"
-    name="filterDesc" id="filterDesc" placeholder="Filter...">
-    <label class="col-form-label col-sm-5"> Filtrando por: {{filterSearch}}</label>
+    <div>
+      <label class="col-form-label col-sm-2 text-sm-right" for="filterDesc"> Filtro:</label>
+      <input type="text" [(ngModel)]="filterSearch" class="form-control" name="filterDesc" id="filterDesc" placeholder="Filter...">
+      <label class="col-form-label col-sm-5"> Filtrando por: {{filterSearch}}</label>
+    </div>
+  <div>
+    <button type="button" class="btn btn-default" id="btn" (click)="orderFecha()">Orden por fecha </button>
+    <button type="button" class="btn btn-default" id="btn" (click)="orderPrecio()">Orden por precio </button>
   </div>
+
 </div>
 
-<div class="table-responsive">
+<div class="col-sm-5">
+</div>
+<div class="card-columns mt-4">
   <h3 *ngIf="misEventos.length === 0"> No hay eventos </h3>
-  <div class="card" *ngFor="let evento of misEventos | eventFilter:filterSearch">
-
+  <div class="card" *ngFor="let evento of misEventos | eventFilter: filterSearch | orderFilter: ordenar" >
     <div class="card-body">
-      <img src="{{evento.image}}" alt="" width="20%">
-    </div>
-    <div class="card-body">
+      <img [src]="evento.image" class="img-fluid" width="20%" margin="10px">
       <h4 class="card-title">{{evento.title | titlecase}}</h4>
       <p class="card-text">{{evento.description}}</p>
     </div>
     <div class="card-footer text-muted">
-      {{evento.date | date:'dd/MM/y' }}
-      <span class="float-right">{{evento.price | currency:'EUR':'symbol'}}</span>
+      {{evento.date | date:'dd/MM/yy' }}
+    <span class="float-right">{{evento.price | currency:'EUR':'symbol'}}</span>
     </div>
-  </div>
+    </div>
 </div>
