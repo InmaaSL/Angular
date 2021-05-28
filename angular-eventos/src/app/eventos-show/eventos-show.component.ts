@@ -41,6 +41,15 @@ export class EventosShowComponent implements OnInit {
     }
   ];
 
+  nuevoEvento: IEvento = {
+    title: '',
+    image: '',
+    date: '',
+    description: '',
+    price: 0
+  }
+
+
   constructor() { }
 
   ngOnInit(): void {
@@ -54,5 +63,28 @@ export class EventosShowComponent implements OnInit {
     this.ordenar = "price";
   }
 
+  form = "mt-4";
+
+  addEvento(){
+    // this.eventos.push(Object.assign({}, this.newEvento));
+    //Recorre el array, coge los valores y los que estén referenciados se guardan como valores propios.
+    this.misEventos.push({...this.nuevoEvento});
+    this.misEventos = [...this.misEventos];
+
+    this.nuevoEvento.title = '';
+    this.nuevoEvento.image = '';
+    this.nuevoEvento.description = '';
+    this.nuevoEvento.date = '';
+    this.nuevoEvento.price = 0;
+  }
+
+  changeImage(fileInput: HTMLInputElement) {
+    if (!fileInput.files || fileInput.files.length === 0) { return; }
+      const reader: FileReader = new FileReader();
+      reader.readAsDataURL(fileInput.files[0]);
+      reader.addEventListener('loadend', e => {
+      this.nuevoEvento.image = reader.result as string;
+    });
+  }
 
 }

@@ -12,6 +12,50 @@
 
 </div>
 
+<div class="container">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h2>Inserte su evento:</h2>
+    </div>
+    <div class="panel-body">
+      <form class="mt-4" (ngSubmit)="addEvento()">
+
+        <div class="form-group">
+          <label for="title">Título del evento:</label>
+          <input type="text" class="form-control" name="title" [(ngModel)]="nuevoEvento.title">
+        </div>
+
+        <div class="form-group">
+          <label for="description">Descripción del evento:</label>
+          <input type="text" class="form-control" name="description" [(ngModel)]="nuevoEvento.description">
+
+        </div>
+
+        <div class="form-group">
+          <label for="date">Fecha del evento:</label>
+          <input type="text" class="form-control" name="date" [(ngModel)]="nuevoEvento.date" placeholder="2021-01-19">
+        </div>
+
+        <div class="form-group">
+          <label for="price">Precio del evento:</label>
+          <input type="text" class="form-control" name="price" [(ngModel)]="nuevoEvento.price">
+        </div>
+
+        <div class="form-group">
+          <label for="image">Imagen:</label>
+          <!-- <input type="file" class="form-control" name="image" #fileImage (change)="changeImage(fileImage)" [(ngModel)]="nuevoEvento.image"> -->
+          <input type="file" class="form-control" name="image" #fileImage (change)="changeImage(fileImage)">
+        </div>
+
+        <button type="submit" class = "btn btn-default"> Crear evento </button>
+      </form>
+    </div>
+  </div>
+
+
+
+
+
 <div class="col-sm-5">
 </div>
 <div class="card-columns mt-4">
@@ -20,7 +64,9 @@
     <div class="card-body">
       <img [src]="evento.image" class="img-fluid" width="20%" margin="10px">
       <h4 class="card-title">{{evento.title | titlecase}}</h4>
-      <p class="card-text">{{evento.description}}</p>
+      <!-- <p class="card-text">{{evento.description}}</p> -->
+      <p class="card-text" [innerText]="evento.description"></p>
+
     </div>
     <div class="card-footer text-muted">
       {{evento.date | date:'dd/MM/yy' }}
