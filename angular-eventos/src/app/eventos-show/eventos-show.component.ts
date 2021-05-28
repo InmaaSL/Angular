@@ -10,6 +10,8 @@ import { IEvento } from '../interfaces/ievento';
 export class EventosShowComponent implements OnInit {
   //title = "Mi lista de eventos";
 
+  filterSearch = "";
+
   misEventos: IEvento[] = [
     {
       title: "Salimos a correr",
@@ -31,7 +33,7 @@ export class EventosShowComponent implements OnInit {
       price: 1
     },{
       title: "Examen Angular",
-      image: "assets/pajaros.jpg",
+      image: "assets/examen.jpg",
       date: "2021-06-23",
       description: "Sacaremos mínimo un 5",
       price: 100
@@ -42,5 +44,7 @@ export class EventosShowComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+
 
 }
