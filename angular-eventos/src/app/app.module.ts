@@ -7,6 +7,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { EventFilterPipe } from './pipes/event-filter.pipe';
 import { OrderFilterPipe } from './pipes/order-filter.pipe';
+import { EventoItemComponent } from './evento-item/evento-item.component';
+import { EventoAddComponent } from './evento-add/evento-add.component';
 
 
 @NgModule({
@@ -14,7 +16,9 @@ import { OrderFilterPipe } from './pipes/order-filter.pipe';
     AppComponent,
     EventosShowComponent,
     EventFilterPipe,
-    OrderFilterPipe
+    OrderFilterPipe,
+    EventoItemComponent,
+    EventoAddComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IEvento } from '../interfaces/ievento';
+import { EventosService } from '../services/eventos.service';
 
 @Component({
   selector: 'app-eventos-show',
@@ -13,46 +14,15 @@ export class EventosShowComponent implements OnInit {
   filterSearch = "";
   ordenar =  "";
 
-  misEventos: IEvento[] = [
-    {
-      title: "Salimos a correr",
-      image: "assets/correr.jpg",
-      date: "2021-01-23",
-      description: "Nos lo pasaremos genial",
-      price: 5
-    }, {
-      title: "Sintamos la música",
-      image: "assets/musica.jpeg",
-      date: "2020-01-24",
-      description: "Déjate llevar",
-      price: 8.5
-    },{
-      title: "Papiroflexia",
-      image: "assets/papiroflexia.jpg",
-      date: "2021-01-30",
-      description: "Encuentra lo que estás buscando",
-      price: 1
-    },{
-      title: "Examen Angular",
-      image: "assets/examen.jpg",
-      date: "2021-06-23",
-      description: "Sacaremos mínimo un 5",
-      price: 100
-    }
-  ];
+  misEventos: IEvento[] = [];
 
-  nuevoEvento: IEvento = {
-    title: '',
-    image: '',
-    date: '',
-    description: '',
-    price: 0
-  }
+  evento!: IEvento;
 
 
-  constructor() { }
+  constructor( private EventosService: EventosService) { }
 
   ngOnInit(): void {
+    this.misEventos = this.EventosService.getEventos();
   }
 
   orderFecha(){
@@ -65,26 +35,21 @@ export class EventosShowComponent implements OnInit {
 
   form = "mt-4";
 
-  addEvento(){
+  addEvento(evento: IEvento){
     // this.eventos.push(Object.assign({}, this.newEvento));
     //Recorre el array, coge los valores y los que estén referenciados se guardan como valores propios.
-    this.misEventos.push({...this.nuevoEvento});
-    this.misEventos = [...this.misEventos];
+    //this.misEventos.push({...this.evento});
+    //this.misEventos = [...this.misEventos];
+    this.misEventos = [...this.misEventos, evento];
 
-    this.nuevoEvento.title = '';
-    this.nuevoEvento.image = '';
-    this.nuevoEvento.description = '';
-    this.nuevoEvento.date = '';
-    this.nuevoEvento.price = 0;
+    this.evento.title = '';
+    this.evento.image = '';
+    this.evento.description = '';
+    this.evento.date = '';
+    this.evento.price = 0;
   }
 
-  changeImage(fileInput: HTMLInputElement) {
-    if (!fileInput.files || fileInput.files.length === 0) { return; }
-      const reader: FileReader = new FileReader();
-      reader.readAsDataURL(fileInput.files[0]);
-      reader.addEventListener('loadend', e => {
-      this.nuevoEvento.image = reader.result as string;
-    });
+  eliminarEvento(evento: IEvento){
+    this.misEventos = this.misEventos.filter(e=>e !== evento);
   }
-
 }

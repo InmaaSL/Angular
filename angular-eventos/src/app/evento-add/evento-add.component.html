@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h2>Inserte su evento:</h2>
+    </div>
+    <div class="panel-body">
+      <form class="mt-4" (ngSubmit)="crearEventoNuevo()">
+
+        <div class="form-group">
+          <label for="title">Título del evento:</label>
+          <input type="text" class="form-control" name="title" [(ngModel)]="eventoNuevo.title">
+        </div>
+
+        <div class="form-group">
+          <label for="description">Descripción del evento:</label>
+          <input type="text" class="form-control" name="description" [(ngModel)]="eventoNuevo.description">
+
+        </div>
+
+        <div class="form-group">
+          <label for="date">Fecha del evento:</label>
+          <input type="text" class="form-control" name="date" [(ngModel)]="eventoNuevo.date" placeholder="2021-01-19">
+        </div>
+
+        <div class="form-group">
+          <label for="price">Precio del evento:</label>
+          <input type="text" class="form-control" name="price" [(ngModel)]="eventoNuevo.price">
+        </div>
+
+        <div class="form-group">
+          <label for="image">Imagen:</label>
+          <!-- <input type="file" class="form-control" name="image" #fileImage (change)="changeImage(fileImage)" [(ngModel)]="nuevoEvento.image"> -->
+          <input type="file" class="form-control" name="image" #fileImage (change)="changeImage(fileImage)">
+        </div>
+
+        <button type="submit" class = "btn btn-default"> Crear evento </button>
+      </form>
+    </div>
+  </div>
