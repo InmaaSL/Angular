@@ -22,7 +22,7 @@ export class EventosShowComponent implements OnInit {
   constructor( private EventosService: EventosService) { }
 
   ngOnInit(): void {
-    this.misEventos = this.EventosService.getEventos();
+    this.EventosService.getEventos().subscribe( eventos => this.misEventos = eventos);
   }
 
   orderFecha(){

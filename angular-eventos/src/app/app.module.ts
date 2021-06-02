@@ -10,6 +10,9 @@ import { OrderFilterPipe } from './pipes/order-filter.pipe';
 import { EventoItemComponent } from './evento-item/evento-item.component';
 import { EventoAddComponent } from './evento-add/evento-add.component';
 
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { BaseUrlInterceptor } from './interceptor/base-url.interceptor';
+
 
 @NgModule({
   declarations: [
@@ -23,9 +26,12 @@ import { EventoAddComponent } from './evento-add/evento-add.component';
   imports: [
     BrowserModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [{provide: HTTP_INTERCEPTORS,
+              useClass: BaseUrlInterceptor,
+              multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
